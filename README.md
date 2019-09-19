@@ -1,4 +1,3 @@
-# fullstack-linuxproject
 ###########################################################
 # File: README.md
 # Author: Howard Nathanson
@@ -19,6 +18,7 @@ NOTE: The AWS, Google API, and Facebook API accounts were closed upon confirmati
 
 Website Configuration:
 The Ubuntu Linux server is hosted on AWS Lightsail. AWS Lightsail can be found at https://lightsail.aws.amazon.com/ls/webapp. The URL for the assigned IP Address can be found by a reverse lookup. I used https://mxtoolbox.com/ReverseLookup.aspx.
+
 * Statuc IP Address: 3.225.25.4
 * URL: http://ec2-3-225-25-4.compute-1.amazonaws.com/
 
@@ -97,6 +97,7 @@ CREATE A CONFIG FILE FOR THE PROJECT
 * run: sudo cp /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/catalog.conf
 * run: sudo vi /etc/apache2/sites-enabled/catalog.conf (edit file for project)
 	Add the following contents to the file (specific to this project):
+
 <VirtualHost *:80>
         ServerName 3.225.25.4
         ServerAdmin admin@3.225.25.4
@@ -142,10 +143,10 @@ Since my GitHub repository contains all the files from all the projects, I impor
 Create the home wsgi file
 * run: sudo vi catalog.wsgi
 	Enter the following contents:
+
 #!/usr/bin/env python3
 import sys
 import logging
-
 logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0, "/var/www/catalog/catalog/")
 from __init__ import app as application
@@ -211,6 +212,17 @@ From any broswer, enter the website using either the IP address or the URL
 http://3.225.25.4/
 http://ec2-3-225-25-4.compute-1.amazonaws.com/
 
+NOTE: I looked into setting up a DNS entry to make the URL more readable for the user; however, I found the docmentation for how to do this a bit confusing so I passed on this. 
+
 NOTE: The website will only work until the nanodegree is completed, then the IP address will be disabled. 
 
+
+REFERENCES
+Due to the sparse materials provided by the course for this project, the following website provided information and help, allowing me to complete this project.
+
+* https://github.com/Dominick2018/Ubuntu-Linux-Server-Project - provided valuable steps in the README.md file
+https://github.com/boisalai/udacity-linux-server-configuration/blob/master/README.md - provided valuable setps in the README.md file
+* http://leonwang.me/post/deploy-flask - helped deploy Flask using Python3
+* http://httpd.apache.org/docs/2.4/ - Apache web server docuemtation
+* https://linuxize.com/post/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04/ - setting up virtual hosts on an Ubuntu server
 
